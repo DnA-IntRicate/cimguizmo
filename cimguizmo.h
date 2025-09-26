@@ -3,7 +3,9 @@
 #ifndef CIMGUIZMO_INCLUDED
 #define CIMGUIZMO_INCLUDED
 
-#include "cimgui.h"
+// Updated to IntricateEngine include paths
+#include <cimgui.h>
+#include <ImGuizmo.h>
 
 #ifdef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
@@ -113,10 +115,4 @@ CIMGUI_API Style* Style_Style(void);
 CIMGUI_API void Style_destroy(Style* self);
 CIMGUI_API Style* ImGuizmo_GetStyle(void);
 
-
-
 #endif //CIMGUIZMO_INCLUDED
-
-
-
-
