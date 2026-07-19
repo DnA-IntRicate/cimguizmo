@@ -3,88 +3,10 @@
 #ifndef CIMGUIZMO_INCLUDED
 #define CIMGUIZMO_INCLUDED
 
-// Updated to IntricateEngine include paths
 #include <cimgui.h>
-#include <ImGuizmo.h>
 
 #ifdef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
-
-typedef struct ImGuiWindow ImGuiWindow;
-struct ImGuiWindow;
-typedef enum {
-      TRANSLATE_X = (1u << 0),
-      TRANSLATE_Y = (1u << 1),
-      TRANSLATE_Z = (1u << 2),
-      ROTATE_X = (1u << 3),
-      ROTATE_Y = (1u << 4),
-      ROTATE_Z = (1u << 5),
-      ROTATE_SCREEN = (1u << 6),
-      SCALE_X = (1u << 7),
-      SCALE_Y = (1u << 8),
-      SCALE_Z = (1u << 9),
-      BOUNDS = (1u << 10),
-      SCALE_XU = (1u << 11),
-      SCALE_YU = (1u << 12),
-      SCALE_ZU = (1u << 13),
-      TRANSLATE = TRANSLATE_X | TRANSLATE_Y | TRANSLATE_Z,
-      ROTATE = ROTATE_X | ROTATE_Y | ROTATE_Z | ROTATE_SCREEN,
-      SCALE = SCALE_X | SCALE_Y | SCALE_Z,
-      SCALEU = SCALE_XU | SCALE_YU | SCALE_ZU,
-      UNIVERSAL = TRANSLATE | ROTATE | SCALEU
-   }OPERATION;
-typedef enum {
-      LOCAL,
-      WORLD
-   }MODE;
-typedef enum {
-      MT_NONE,
-      MT_MOVE_X,
-      MT_MOVE_Y,
-      MT_MOVE_Z,
-      MT_MOVE_YZ,
-      MT_MOVE_ZX,
-      MT_MOVE_XY,
-      MT_MOVE_SCREEN,
-      MT_ROTATE_X,
-      MT_ROTATE_Y,
-      MT_ROTATE_Z,
-      MT_ROTATE_SCREEN,
-      MT_SCALE_X,
-      MT_SCALE_Y,
-      MT_SCALE_Z,
-      MT_SCALE_XYZ
-   }MOVETYPE;
-typedef enum {
-      DIRECTION_X,
-      DIRECTION_Y,
-      DIRECTION_Z,
-      PLANE_X,
-      PLANE_Y,
-      PLANE_Z,
-      SELECTION,
-      INACTIVE,
-      TRANSLATION_LINE,
-      SCALE_LINE,
-      ROTATION_USING_BORDER,
-      ROTATION_USING_FILL,
-      HATCHED_AXIS_LINES,
-      TEXT,
-      TEXT_SHADOW,
-      COUNT
-   }COLOR;
-typedef struct Style Style;
-struct Style
-{
-      float TranslationLineThickness;
-      float TranslationLineArrowSize;
-      float RotationLineThickness;
-      float RotationOuterLineThickness;
-      float ScaleLineThickness;
-      float ScaleLineCircleSize;
-      float HatchedAxisLineThickness;
-      float CenterCircleSize;
-      ImVec4 Colors[COUNT];
-};
+#include <imgui_structs.h>
 #else
 #endif // CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
@@ -141,8 +63,11 @@ CIMGUI_API void ImGuizmo_SetAxisLimit(float value);
 CIMGUI_API void ImGuizmo_SetAxisMask(bool x,bool y,bool z);
 CIMGUI_API void ImGuizmo_SetPlaneLimit(float value);
 CIMGUI_API bool ImGuizmo_IsOver_FloatPtr(float* position,float pixelRadius);
+CIMGUI_API void ImGuizmo_ComputeMouseRay(const float* view,const float* projection,const ImVec2_c mousePosition,const ImVec2_c rectPosition,const ImVec2_c rectSize,float* rayOrigin,float* rayDirection);
 CIMGUI_API Style* Style_Style(void);
 CIMGUI_API void Style_destroy(Style* self);
 CIMGUI_API Style* ImGuizmo_GetStyle(void);
+
+
 
 #endif //CIMGUIZMO_INCLUDED

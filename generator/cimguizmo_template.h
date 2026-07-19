@@ -1,10 +1,10 @@
 #ifndef CIMGUIZMO_INCLUDED
 #define CIMGUIZMO_INCLUDED
 
-#include "cimgui.h"
+#include <cimgui.h>
 
 #ifdef CIMGUI_DEFINE_ENUMS_AND_STRUCTS
-#include "imgui_structs.h"
+#include <imgui_structs.h>
 #else
 #endif // CIMGUI_DEFINE_ENUMS_AND_STRUCTS
 
@@ -14,7 +14,3 @@ PLACE_STRUCTS_C
 
 
 #endif //CIMGUIZMO_INCLUDED
-
-
-
-
